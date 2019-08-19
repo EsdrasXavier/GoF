@@ -1,9 +1,3 @@
-
-"""
-Define a one-to-many dependency between objects so that when one object
-changes state, all its dependents are notified and updatedautomatically.
-"""
-
 import time
 from subject import Subject
 from observer import Observer
@@ -11,21 +5,21 @@ from tkinter import *
 
 
 class Note(Toplevel, Observer):
+  '''Used to create multiple screens
+  '''
   nid = 0
-  #title = "" #this would block the method to override the current title
   message = ""
 
-  def __init__(self, master, nid, title, message):
+  def __init__(self, master, nid, title, message=''):
     Toplevel.__init__(self,master)
     self.nid = nid
-    self.title(title) #since toplevel widgets define a method called title you can't store it as an attribute
+    self.title(title)
     self.message = message
-    self.display_note_gui() #maybe just leave that code part of the __init__?
+    self.display_note_gui()
 
 
   def display_note_gui(self):
     '''Tkinter to create a note gui window with parameters '''
-    #no window, just self
     self.geometry("200x200")
     self.configure(background="#BAD0EF")
     title = Entry(self,relief=FLAT, bg="#BAD0EF", bd=0)
@@ -36,8 +30,10 @@ class Note(Toplevel, Observer):
                           font=("Times", "14"))
     self.textArea.pack(side=RIGHT, fill=Y)
 
+
   def run(self):
     self.display_note_gui()
+
 
   def update_txt(self, arg):
     self._observer_state = arg
@@ -46,6 +42,7 @@ class Note(Toplevel, Observer):
 
 
 class MainView:
+  '''Will handle the main view'''
   def __init__(self, master, subject):
     master.title("A simple GUI")
     self.i = 0
@@ -75,13 +72,13 @@ def main():
   _views = []
 
   for i in range(5):
-    _views.append(Note(root, i, 'View %i' %i, ''))
+    _views.append(Note(root, i, 'View %i' %i))
 
   for v in _views:
     subject.attach(v)
 
   my_gui = MainView(root, subject)
-  root.mainloop() #still call mainloop on the root
+  root.mainloop()
 
 if __name__ == "__main__":
     main()
