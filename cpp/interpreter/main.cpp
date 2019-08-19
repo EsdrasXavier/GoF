@@ -1,3 +1,8 @@
+/**
+ * To compile use:
+ * g++ -o main Context.hpp Expression.hpp  main.cpp -std=c++11
+ */
+
 #include <iostream>
 #include <vector>
 #include "Context.hpp"

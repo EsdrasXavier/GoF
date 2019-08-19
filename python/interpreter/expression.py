@@ -58,12 +58,16 @@ class HundredExpression(Expression):
 
   def one(self):
     return "C"
+
   def four(self):
     return "CD"
+
   def five(self):
     return "D"
+
   def nine(self):
     return "CM"
+
   def multiplier(self):
     return 100
 

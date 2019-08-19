@@ -1,3 +1,8 @@
+/**
+ * To compile use:
+ * g++ -o main Observer.hpp View.hpp Subject.cpp main.cpp -std=c++11
+ */
+
 #include <iostream>
 #include "View.hpp"
 #include "Subject.hpp"
