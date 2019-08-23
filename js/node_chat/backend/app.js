@@ -91,8 +91,8 @@ wsServer.on('request', (request) => {
     // console.log(connection, data);
 
     if (subject.observers.length > 0) {
-      logger.info(`Peer ${connection.remoteAddress} disconnected.`)
-      // subject.detach(connection);
+      logger.info(`Peer ${connection.remoteAddress} disconnected.`);
+      subject.detach(connection);
     }
   });
 });

@@ -15,7 +15,7 @@ class Subject {
   }
 
   detach(observer) {
-    this.observer.pop(observer);
+    this.observers.pop(observer);
   }
 
   notify() {
