@@ -19,7 +19,9 @@ class Note(Toplevel, Observer):
 
 
   def display_note_gui(self):
-    '''Tkinter to create a note gui window with parameters '''
+    '''Tkinter to create a note gui window
+        with parameters
+    '''
     self.geometry("200x200")
     self.configure(background="#BAD0EF")
     title = Entry(self,relief=FLAT, bg="#BAD0EF", bd=0)
