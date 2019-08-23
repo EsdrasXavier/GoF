@@ -2,7 +2,7 @@
 
 process.title = 'node-chat';
 
-const WEB_SOCKET_PORT = 3000;
+const WEB_SOCKET_PORT = process.env.PORT || 5000;
 // websocket and http servers
 const webSocketServer = require('websocket').server;
 const http = require('http');
