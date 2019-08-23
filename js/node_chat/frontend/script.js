@@ -1,5 +1,9 @@
 $(() => {
   "use strict";
+
+  $('#send').on('click', () => {
+    sendData();
+  })
   // for better performance - to avoid searching in DOM
   let content = $('#content');
   let input = $('#input');
@@ -18,7 +22,7 @@ $(() => {
     return;
   }
 
-  var connection = new WebSocket('ws://127.0.0.1:5000'); // 'ws://gof-observer.herokuapp.com/'
+  var connection = new WebSocket('ws://gof-observer.herokuapp.com/'); // 'ws://gof-observer.herokuapp.com/'
   connection.onopen = () => {
     // first we want users to enter their names
     input.removeAttr('disabled');
@@ -60,20 +64,24 @@ $(() => {
    */
   input.keydown((e) => {
     if (e.keyCode === 13) {
-      let _in = $('#input');
-      let msg = _in.val();
-      if (!msg) return;
-
-      // send the message as an ordinary text
-      connection.send(msg);
-      _in.val('');
-
-      if (myName === false) {
-        myName = msg;
-        status.text(myName + ': ');
-      }
+      sendData();
     }
   });
+
+  var sendData = () => {
+    let _in = $('#input');
+    let msg = _in.val();
+    if (!msg) return;
+
+    // send the message as an ordinary text
+    connection.send(msg);
+    _in.val('');
+
+    if (myName === false) {
+      myName = msg;
+      status.text(myName + ': ');
+    }
+  }
 
   setInterval(() => {
     if (connection.readyState !== 1) {
