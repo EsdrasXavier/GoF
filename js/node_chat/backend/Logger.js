@@ -4,18 +4,18 @@ class Logger {
   }
 
   info(msg) {
-    msg = `${(new Date())} - ${this.fileName} - [INFO] - ${msg}`;
+    msg = `${this.fileName} - [INFO] - ${msg}`;
     console.log(msg);
   }
 
 
   debug(msg) {
-    console.log((new Date()) + '[DEBUG] ' + msg);
+    console.log('[DEBUG] ' + msg);
   }
 
 
   error(msg) {
-    console.log((new Date()) + '[ERROR] ' + msg);
+    console.log('[ERROR] ' + msg);
   }
 }
 
